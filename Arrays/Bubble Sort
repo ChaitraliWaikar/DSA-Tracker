@@ -1,0 +1,39 @@
+/*
+ We repeatedly go through the array and swap adjacent elements 
+ if they are in the wrong order. After each pass, the largest 
+ element moves to the end, so we reduce the inner loop range.
+
+ Time Complexity: O(n^2)
+ Space Complexity: O(1)
+*/
+
+class Solution {
+    public int[] bubbleSort(int[] nums) {
+        int n = nums.length;
+
+        for (int i = 0; i < n - 1; i--)                         // Outer loop: run n-1  passes ( n-1 down to 1)
+      {                                                  
+            for (int j = 0; j <  i ; j++)                 // Inner loop: skip last sorted ele 
+            {
+                if (nums[j] > nums[j + 1]) {                    // Swap adjacent elements
+                    int temp = nums[j];
+                    nums[j] = nums[j + 1]; 
+                    nums[j + 1] = temp;
+                }
+            }
+        }
+
+        return nums;
+    }
+
+    public static void main(String[] args) {
+        Solution sol = new Solution();
+        int[] nums = {64, 25, 12, 22, 11};
+        int[] sorted = sol.bubbleSort(nums);             // call the method
+
+        System.out.print("Sorted array: ");
+        for (int x : sorted) {
+            System.out.print(x + " ");
+        }
+    }
+}
