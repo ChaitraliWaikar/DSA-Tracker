@@ -1,0 +1,43 @@
+/*
+ We build the sorted array one element at a time.
+ For each element, place it into its correct position 
+ among the elements that are already sorted on the left.
+
+ Time Complexity: O(n^2) (worst case)
+ Best Case: O(n) when the array is already sorted
+ Space Complexity: O(1)
+*/
+
+class Solution {
+    public int[] insertionSort(int[] nums) {
+        int n = nums.length;
+
+                                                         
+        for (int i = 1; i < n; i++)                                  // Start from the 2nd element (index 1)
+      {                
+            int key = nums[i];                                       // element to consider (key)
+            int j = i - 1;                                           // first left element to key,
+                                                      
+            while (j >= 0 && nums[j] > key) {                         // Compare key to left elements, greater then swap
+                nums[j + 1] = nums[j];             // swap
+                j--;                              // , then next and so on... 
+            }
+
+            nums[j + 1] = key;                                     // Place the key at its correct position
+        }
+
+        return nums;
+    }
+
+ 
+    public static void main(String[] args) {
+        Solution sol = new Solution();
+        int[] nums = {64, 25, 12, 22, 11};
+        int[] sorted = sol.insertionSort(nums);                     //call the method
+
+        System.out.print("Sorted array: ");
+        for (int x : sorted) {
+            System.out.print(x + " ");
+        }
+    }
+}
