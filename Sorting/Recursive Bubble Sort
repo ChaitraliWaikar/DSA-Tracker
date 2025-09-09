@@ -1,0 +1,42 @@
+/*
+Time Complexity:
+Best, Average, Worst: 𝑂(𝑛^2) (because even if sorted, it still compares all pairs).
+Space complexity: O(n) (due to recursion stack, depth = n                                
+*/
+
+import java.util.*;
+
+class Soln{
+    public static void recursive_Bubble(int[] arr, int n){
+        if (n == 1) return;
+
+        for(int i =0; i<n-1; i++){
+            int j = i+1;
+            if(arr[i]<arr[j]){
+                int temp = arr[j];
+                arr[j] = arr[i];
+                arr[i] = temp;
+            }
+        }
+        
+         recursive_Bubble(arr, n - 1);
+    }
+}
+
+class Main{
+    public static void main(String args[]){
+        Scanner sc = new Scanner(Sysytem.in);
+        int arr = {8,4,9,2,1,3};
+        int n = arr.length;
+        System.out.println("Before Sorting: ");
+        for(int i=0; i<n; i++){
+            Sysystem.out.println(arr[i]);
+        }
+        Soln.recursive_Bubble(arr,n);
+        
+        System.out.println("After Sorting: ");
+        for(int i=0; i<n; i++){
+            Sysystem.out.println(arr[i]);
+        }
+    }
+}
